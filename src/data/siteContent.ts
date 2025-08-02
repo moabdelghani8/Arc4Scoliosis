@@ -1,0 +1,136 @@
+import { SiteContent } from '../types';
+
+export const defaultSiteContent: SiteContent = {
+  sections: [
+    { id: '1', type: 'hero', title: 'Hero Section', visible: true, order: 1, content: {} },
+    { id: '2', type: 'about', title: 'About Us', visible: true, order: 2, content: {} },
+    { id: '3', type: 'services', title: 'Services', visible: true, order: 3, content: {} },
+    { id: '4', type: 'team', title: 'Our Team', visible: true, order: 4, content: {} },
+    { id: '5', type: 'cases', title: 'Patient Results', visible: true, order: 5, content: {} },
+    { id: '6', type: 'testimonials', title: 'Testimonials', visible: true, order: 6, content: {} },
+    { id: '7', type: 'contact', title: 'Contact Us', visible: true, order: 7, content: {} },
+  ],
+  hero: {
+    headline: 'Restore Your Movement, Reclaim Your Life',
+    subheadline: 'Expert physical therapy treatment with personalized care and proven results. Get back to doing what you love.',
+    ctaText: 'Start Your Recovery',
+    backgroundImage: 'https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop'
+  },
+  about: {
+    title: 'Excellence in Physical Therapy Care',
+    bodyText: 'At our clinic, we combine evidence-based treatment approaches with compassionate care to help you achieve your recovery goals. Our state-of-the-art facility and experienced team are dedicated to providing personalized treatment plans that address your unique needs and lifestyle.',
+    image: 'https://images.pexels.com/photos/4506105/pexels-photo-4506105.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+  },
+  teamMembers: [
+    {
+      id: '1',
+      name: 'Dr. Sarah Johnson',
+      title: 'Lead Physical Therapist',
+      credentials: 'DPT, OCS, FAAOMPT',
+      bio: 'With over 15 years of experience in orthopedic and sports physical therapy, Dr. Johnson specializes in manual therapy and movement analysis.',
+      image: 'https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
+    },
+    {
+      id: '2',
+      name: 'Michael Chen',
+      title: 'Sports Rehabilitation Specialist',
+      credentials: 'DPT, SCS, CSCS',
+      bio: 'Michael focuses on returning athletes to peak performance through specialized rehabilitation programs and injury prevention strategies.',
+      image: 'https://images.pexels.com/photos/5407764/pexels-photo-5407764.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
+    },
+    {
+      id: '3',
+      name: 'Dr. Emily Rodriguez',
+      title: 'Neurological Rehabilitation Specialist',
+      credentials: 'DPT, NCS',
+      bio: 'Dr. Rodriguez specializes in neurological conditions and helps patients recover from stroke, spinal cord injuries, and other neurological disorders.',
+      image: 'https://images.pexels.com/photos/5407205/pexels-photo-5407205.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
+    }
+  ],
+  services: [
+    {
+      id: '1',
+      title: 'Orthopedic Rehabilitation',
+      description: 'Comprehensive treatment for bone, joint, and muscle injuries including post-surgical recovery.',
+      icon: 'bone'
+    },
+    {
+      id: '2',
+      title: 'Sports Injury Recovery',
+      description: 'Specialized programs to get athletes back to peak performance safely and efficiently.',
+      icon: 'activity'
+    },
+    {
+      id: '3',
+      title: 'Manual Therapy',
+      description: 'Hands-on techniques to improve mobility, reduce pain, and restore function.',
+      icon: 'hand'
+    },
+    {
+      id: '4',
+      title: 'Movement Analysis',
+      description: 'Advanced assessment of movement patterns to identify and correct dysfunctions.',
+      icon: 'eye'
+    },
+    {
+      id: '5',
+      title: 'Pain Management',
+      description: 'Evidence-based approaches to manage chronic pain and improve quality of life.',
+      icon: 'shield'
+    },
+    {
+      id: '6',
+      title: 'Wellness & Prevention',
+      description: 'Programs designed to prevent injuries and maintain optimal physical health.',
+      icon: 'heart'
+    }
+  ],
+  caseStudies: [
+    {
+      id: '1',
+      title: 'ACL Reconstruction Recovery',
+      beforeImage: 'https://images.pexels.com/photos/7659564/pexels-photo-7659564.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+      afterImage: 'https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+      condition: 'Complete ACL tear from soccer injury',
+      treatment: '6-month progressive rehabilitation program focusing on strength, stability, and sport-specific movements',
+      outcome: 'Full return to competitive soccer with improved performance metrics',
+      description: 'Professional soccer player returned to elite competition after comprehensive ACL rehabilitation program.'
+    },
+    {
+      id: '2',
+      title: 'Chronic Lower Back Pain Resolution',
+      beforeImage: 'https://images.pexels.com/photos/7659726/pexels-photo-7659726.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+      afterImage: 'https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+      condition: '5-year history of chronic lower back pain affecting daily activities',
+      treatment: 'Comprehensive approach including manual therapy, movement re-education, and strengthening',
+      outcome: '90% reduction in pain levels and return to all desired activities',
+      description: 'Office worker overcame debilitating back pain through targeted therapeutic intervention.'
+    }
+  ],
+  testimonials: [
+    {
+      id: '1',
+      quote: 'The team here completely transformed my recovery experience. Professional, caring, and incredibly effective treatment.',
+      patientName: 'Jennifer K.',
+      condition: 'Shoulder Surgery Recovery'
+    },
+    {
+      id: '2',
+      quote: 'After years of chronic pain, I finally found relief. The personalized approach made all the difference.',
+      patientName: 'Robert M.',
+      condition: 'Chronic Back Pain'
+    },
+    {
+      id: '3',
+      quote: 'Got me back on the field stronger than ever. Their sports rehab program is outstanding.',
+      patientName: 'Alex T.',
+      condition: 'Sports Injury'
+    }
+  ],
+  contactInfo: {
+    address: '123 Wellness Drive, Health City, HC 12345',
+    phone: '(555) 123-4567',
+    email: 'info@ptclinic.com',
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3048.4324!2d-122.4194!3d37.7749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDLCsDQ2JzI5LjYiTiAxMjLCsDI1JzA5LjgiVw!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus'
+  }
+};
