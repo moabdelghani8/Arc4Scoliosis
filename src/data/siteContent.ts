@@ -14,21 +14,21 @@ export const defaultSiteContent: SiteContent = {
     headline: 'Restore Your Movement, Reclaim Your Life',
     subheadline: 'Expert physical therapy treatment with personalized care and proven results. Get back to doing what you love.',
     ctaText: 'Start Your Recovery',
-    backgroundImage: 'https://images.pexels.com/photos/3768916/pexels-photo-3768916.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop'
+    backgroundImage: 'https://www.orthobethesda.com/wp-content/uploads/2020/06/Why-Physical-Therapy-Is-Important-1200x900.jpg'
   },
   about: {
     title: 'Excellence in Physical Therapy Care',
     bodyText: 'At our clinic, we combine evidence-based treatment approaches with compassionate care to help you achieve your recovery goals. Our state-of-the-art facility and experienced team are dedicated to providing personalized treatment plans that address your unique needs and lifestyle.',
-    image: 'https://images.pexels.com/photos/4506105/pexels-photo-4506105.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop'
+    image: 'https://www.caryortho.com/wp-content/uploads/2022/04/Post-Surgery-Rehabilitation.jpg'
   },
   teamMembers: [
     {
       id: '1',
-      name: 'Dr. Sarah Johnson',
+      name: 'Dr. Micle Johnson',
       title: 'Lead Physical Therapist',
       credentials: 'DPT, OCS, FAAOMPT',
-      bio: 'With over 15 years of experience in orthopedic and sports physical therapy, Dr. Johnson specializes in manual therapy and movement analysis.',
-      image: 'https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
+      bio: 'With over 15 years of experience in orthopedic and sports physical therapy, Dr. Micle specializes in manual therapy and movement analysis.',
+      image: 'https://www.future-doctor.de/wp-content/uploads/2024/08/shutterstock_2480850611.jpg'
     },
     {
       id: '2',
@@ -36,15 +36,15 @@ export const defaultSiteContent: SiteContent = {
       title: 'Sports Rehabilitation Specialist',
       credentials: 'DPT, SCS, CSCS',
       bio: 'Michael focuses on returning athletes to peak performance through specialized rehabilitation programs and injury prevention strategies.',
-      image: 'https://images.pexels.com/photos/5407764/pexels-photo-5407764.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiO1ABhTbJ30hyaTS5yGuX0cFk_PN51aKV9g&s'
     },
     {
       id: '3',
-      name: 'Dr. Emily Rodriguez',
+      name: 'Dr. Jhib Rodriguez',
       title: 'Neurological Rehabilitation Specialist',
       credentials: 'DPT, NCS',
       bio: 'Dr. Rodriguez specializes in neurological conditions and helps patients recover from stroke, spinal cord injuries, and other neurological disorders.',
-      image: 'https://images.pexels.com/photos/5407205/pexels-photo-5407205.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop'
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzMnqgs3U7KpmaQUo-qSbPEYV_rmz-_dtCoQ&s'
     }
   ],
   services: [
@@ -90,7 +90,7 @@ export const defaultSiteContent: SiteContent = {
       id: '1',
       title: 'ACL Reconstruction Recovery',
       beforeImage: 'https://images.pexels.com/photos/7659564/pexels-photo-7659564.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-      afterImage: 'https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+      afterImage: 'https://images.pexels.com/photos/7659564/pexels-photo-7659564.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
       condition: 'Complete ACL tear from soccer injury',
       treatment: '6-month progressive rehabilitation program focusing on strength, stability, and sport-specific movements',
       outcome: 'Full return to competitive soccer with improved performance metrics',
@@ -99,8 +99,8 @@ export const defaultSiteContent: SiteContent = {
     {
       id: '2',
       title: 'Chronic Lower Back Pain Resolution',
-      beforeImage: 'https://images.pexels.com/photos/7659726/pexels-photo-7659726.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
-      afterImage: 'https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+      beforeImage: 'https://images.pexels.com/photos/7659564/pexels-photo-7659564.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
+      afterImage: 'https://images.pexels.com/photos/7659564/pexels-photo-7659564.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop',
       condition: '5-year history of chronic lower back pain affecting daily activities',
       treatment: 'Comprehensive approach including manual therapy, movement re-education, and strengthening',
       outcome: '90% reduction in pain levels and return to all desired activities',
