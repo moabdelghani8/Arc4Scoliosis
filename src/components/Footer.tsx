@@ -36,7 +36,7 @@ export function Footer() {
               <div className="bg-blue-600 p-2 rounded-lg">
                 <Activity className="h-6 w-6 text-white" />
               </div>
-              <span className="text-xl font-bold">RehabPro</span>
+              <span className="text-xl font-bold">Arc4Scoliosis</span>
             </div>
             
             <p className="text-gray-300 leading-relaxed">
@@ -124,7 +124,7 @@ export function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">
-              © 2024 RehabPro Physical Therapy. All rights reserved.
+              © 2024 Arc4Scoliosis Physical Therapy. All rights reserved.
             </div>
             
             <div className="flex space-x-6 text-sm">
