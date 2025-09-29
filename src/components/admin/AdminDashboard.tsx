@@ -1,25 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  LogOut, 
-  Eye, 
-  Edit3, 
-  Trash2, 
-  Plus, 
-  GripVertical,
-  Settings,
-  Users,
-  FileText,
-  MessageSquare,
-  Phone,
-  EyeOff
-} from 'lucide-react';
-import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { LogOut, Eye, CreditCard as Edit3, Trash2, Plus, GripVertical, Settings, Users, FileText, MessageSquare, Phone, EyeOff } from 'lucide-react' DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Section, SiteContent } from '../../types';
-import { SectionEditor } from './SectionEditor';
-import { AddSectionModal } from './AddSectionModal';
 
 interface AdminDashboardProps {
   onLogout: () => void;
@@ -108,7 +92,7 @@ function SortableItem({ section, onEdit, onDelete, onToggleVisibility }: Sortabl
             }`}
             title={section.visible ? 'Hide section' : 'Show section'}
           >
-            {section.visible ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
+            <Eye className="h-4 w-4" />
           </button>
           
           <button
@@ -134,8 +118,6 @@ function SortableItem({ section, onEdit, onDelete, onToggleVisibility }: Sortabl
 
 export function AdminDashboard({ onLogout, siteContent, onUpdateContent }: AdminDashboardProps) {
   const [activeTab, setActiveTab] = useState<'sections' | 'team' | 'services' | 'cases' | 'testimonials'>('sections');
-  const [editingSection, setEditingSection] = useState<Section | null>(null);
-  const [showAddModal, setShowAddModal] = useState(false);
   
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -164,58 +146,8 @@ export function AdminDashboard({ onLogout, siteContent, onUpdateContent }: Admin
   };
 
   const handleEditSection = (section: Section) => {
-    setEditingSection(section);
-  };
-
-  const handleSaveSection = (updatedSection: Section) => {
-    let updatedContent = { ...siteContent };
-    
-    // Update the section in the sections array
-    updatedContent.sections = siteContent.sections.map(section =>
-      section.id === updatedSection.id ? updatedSection : section
-    );
-    
-    // Update the corresponding content based on section type
-    switch (updatedSection.type) {
-      case 'hero':
-        updatedContent.hero = updatedSection.content;
-        break;
-      case 'about':
-        updatedContent.about = updatedSection.content;
-        break;
-    }
-    
-    onUpdateContent(updatedContent);
-    setEditingSection(null);
-  };
-
-  const handleAddSection = (sectionType: Section['type']) => {
-    const newSection: Section = {
-      id: Date.now().toString(),
-      type: sectionType,
-      title: getSectionTitle(sectionType),
-      visible: true,
-      order: siteContent.sections.length + 1,
-      content: {}
-    };
-    
-    onUpdateContent({
-      ...siteContent,
-      sections: [...siteContent.sections, newSection]
-    });
-  };
-
-  const getSectionTitle = (type: Section['type']): string => {
-    const titles = {
-      hero: 'Hero Section',
-      about: 'About Us',
-      services: 'Services',
-      team: 'Our Team',
-      cases: 'Patient Results',
-      testimonials: 'Testimonials',
-      contact: 'Contact Us'
-    };
-    return titles[type];
+    // In a real app, this would open an edit modal
+    console.log('Edit section:', section);
   };
 
   const handleDeleteSection = (id: string) => {
@@ -245,127 +177,105 @@ export function AdminDashboard({ onLogout, siteContent, onUpdateContent }: Admin
   ];
 
   return (
-    <>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-        {/* Header */}
-        <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
-                Content Management Dashboard
-              </h1>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Header */}
+      <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
+              Content Management Dashboard
+            </h1>
+            
+            <button
+              onClick={onLogout}
+              className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+            >
+              <LogOut className="h-4 w-4" />
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Tabs */}
+        <div className="mb-8">
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <nav className="-mb-px flex space-x-8">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id as any)}
+                  className={`flex items-center space-x-2 py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200 ${
+                    activeTab === tab.id
+                      ? 'border-blue-500 text-blue-600 dark:text-blue-400'
+                      : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300'
+                  }`}
+                >
+                  <tab.icon className="h-4 w-4" />
+                  <span>{tab.label}</span>
+                </button>
+              ))}
+            </nav>
+          </div>
+        </div>
+
+        {/* Sections Tab */}
+        {activeTab === 'sections' && (
+          <div className="space-y-6">
+            <div className="flex justify-between items-center">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Page Sections</h2>
+                <p className="text-gray-600 dark:text-gray-300 mt-2">
+                  Manage the sections that appear on your homepage. Drag to reorder, toggle visibility, or edit content.
+                </p>
+              </div>
               
-              <button
-                onClick={onLogout}
-                className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
-              >
-                <LogOut className="h-4 w-4" />
-                <span>Logout</span>
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center space-x-2">
+                <Plus className="h-4 w-4" />
+                <span>Add Section</span>
               </button>
             </div>
-          </div>
-        </header>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Tabs */}
-          <div className="mb-8">
-            <div className="border-b border-gray-200 dark:border-gray-700">
-              <nav className="-mb-px flex space-x-8">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id as any)}
-                    className={`flex items-center space-x-2 py-2 px-1 border-b-2 font-medium text-sm transition-colors duration-200 ${
-                      activeTab === tab.id
-                        ? 'border-blue-500 text-blue-600 dark:text-blue-400'
-                        : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300'
-                    }`}
-                  >
-                    <tab.icon className="h-4 w-4" />
-                    <span>{tab.label}</span>
-                  </button>
-                ))}
-              </nav>
-            </div>
-          </div>
-
-          {/* Sections Tab */}
-          {activeTab === 'sections' && (
-            <div className="space-y-6">
-              <div className="flex justify-between items-center">
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Page Sections</h2>
-                  <p className="text-gray-600 dark:text-gray-300 mt-2">
-                    Manage the sections that appear on your homepage. Drag to reorder, toggle visibility, or edit content.
-                  </p>
-                </div>
-                
-                <button 
-                  onClick={() => setShowAddModal(true)}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center space-x-2"
-                >
-                  <Plus className="h-4 w-4" />
-                  <span>Add Section</span>
-                </button>
-              </div>
-
-              <DndContext
-                sensors={sensors}
-                collisionDetection={closestCenter}
-                onDragEnd={handleDragEnd}
+            <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragEnd={handleDragEnd}
+            >
+              <SortableContext
+                items={siteContent.sections.map(s => s.id)}
+                strategy={verticalListSortingStrategy}
               >
-                <SortableContext
-                  items={siteContent.sections.map(s => s.id)}
-                  strategy={verticalListSortingStrategy}
-                >
-                  <div className="space-y-4">
-                    {siteContent.sections
-                      .sort((a, b) => a.order - b.order)
-                      .map((section) => (
-                        <SortableItem
-                          key={section.id}
-                          section={section}
-                          onEdit={handleEditSection}
-                          onDelete={handleDeleteSection}
-                          onToggleVisibility={handleToggleVisibility}
-                        />
-                      ))}
-                  </div>
-                </SortableContext>
-              </DndContext>
-            </div>
-          )}
+                <div className="space-y-4">
+                  {siteContent.sections
+                    .sort((a, b) => a.order - b.order)
+                    .map((section) => (
+                      <SortableItem
+                        key={section.id}
+                        section={section}
+                        onEdit={handleEditSection}
+                        onDelete={handleDeleteSection}
+                        onToggleVisibility={handleToggleVisibility}
+                      />
+                    ))}
+                </div>
+              </SortableContext>
+            </DndContext>
+          </div>
+        )}
 
-          {/* Other tabs would show different content management interfaces */}
-          {activeTab !== 'sections' && (
-            <div className="text-center py-16">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                {tabs.find(tab => tab.id === activeTab)?.label} Management
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300">
-                Content management for {activeTab} will be implemented here with full CRUD functionality.
-              </p>
-            </div>
-          )}
-        </div>
+        {/* Other tabs would show different content management interfaces */}
+        {activeTab !== 'sections' && (
+          <div className="text-center py-16">
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              {tabs.find(tab => tab.id === activeTab)?.label} Management
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              Content management for {activeTab} will be implemented here with full CRUD functionality.
+            </p>
+          </div>
+        )}
       </div>
-
-      {/* Modals */}
-      {editingSection && (
-        <SectionEditor
-          section={editingSection}
-          siteContent={siteContent}
-          onSave={handleSaveSection}
-          onClose={() => setEditingSection(null)}
-        />
-      )}
-
-      {showAddModal && (
-        <AddSectionModal
-          onAdd={handleAddSection}
-          onClose={() => setShowAddModal(false)}
-        />
-      )}
-    </>
+    </div>
   );
 }
