@@ -17,6 +17,8 @@ import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSo
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Section, SiteContent } from '../../types';
+import { AddSectionModal } from './AddSectionModal';
+import { EditSectionModal } from './EditSectionModal';
 
 interface AdminDashboardProps {
   onLogout: () => void;
@@ -131,6 +133,9 @@ function SortableItem({ section, onEdit, onDelete, onToggleVisibility }: Sortabl
 
 export function AdminDashboard({ onLogout, siteContent, onUpdateContent }: AdminDashboardProps) {
   const [activeTab, setActiveTab] = useState<'sections' | 'team' | 'services' | 'cases' | 'testimonials'>('sections');
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingSection, setEditingSection] = useState<Section | null>(null);
   
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -159,8 +164,8 @@ export function AdminDashboard({ onLogout, siteContent, onUpdateContent }: Admin
   };
 
   const handleEditSection = (section: Section) => {
-    // In a real app, this would open an edit modal
-    console.log('Edit section:', section);
+    setEditingSection(section);
+    setShowEditModal(true);
   };
 
   const handleDeleteSection = (id: string) => {
@@ -179,6 +184,42 @@ export function AdminDashboard({ onLogout, siteContent, onUpdateContent }: Admin
         section.id === id ? { ...section, visible: !section.visible } : section
       )
     });
+  };
+
+  const handleAddSection = (sectionType: Section['type']) => {
+    const newSection: Section = {
+      id: Date.now().toString(),
+      type: sectionType,
+      title: getSectionTitle(sectionType),
+      visible: true,
+      order: siteContent.sections.length + 1,
+      content: {}
+    };
+
+    onUpdateContent({
+      ...siteContent,
+      sections: [...siteContent.sections, newSection]
+    });
+  };
+
+  const handleSaveSection = (updatedContent: Partial<SiteContent>) => {
+    onUpdateContent({
+      ...siteContent,
+      ...updatedContent
+    });
+  };
+
+  const getSectionTitle = (type: Section['type']): string => {
+    const titles = {
+      hero: 'Hero Section',
+      about: 'About Us',
+      services: 'Services',
+      team: 'Our Team',
+      cases: 'Case Studies',
+      testimonials: 'Testimonials',
+      contact: 'Contact Us'
+    };
+    return titles[type];
   };
 
   const tabs = [
@@ -244,7 +285,10 @@ export function AdminDashboard({ onLogout, siteContent, onUpdateContent }: Admin
                 </p>
               </div>
               
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center space-x-2">
+              <button 
+                onClick={() => setShowAddModal(true)}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center space-x-2"
+              >
                 <Plus className="h-4 w-4" />
                 <span>Add Section</span>
               </button>
@@ -289,6 +333,23 @@ export function AdminDashboard({ onLogout, siteContent, onUpdateContent }: Admin
           </div>
         )}
       </div>
+
+      <AddSectionModal
+        isOpen={showAddModal}
+        onClose={() => setShowAddModal(false)}
+        onAdd={handleAddSection}
+      />
+
+      <EditSectionModal
+        isOpen={showEditModal}
+        onClose={() => {
+          setShowEditModal(false);
+          setEditingSection(null);
+        }}
+        section={editingSection}
+        siteContent={siteContent}
+        onSave={handleSaveSection}
+      />
     </div>
   );
 }
