@@ -618,3 +618,4 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
                   const newTestimonials = [...formData.testimonials];
                   newTestimonials[index] = { ...testimonial, patientName: e.target.value };
                   setFormData(prev => ({ ...prev, testimonials: newTestimonials }));
+                  setFormData(prev => ({ ...prev, testimonials: newTestimonials }));
