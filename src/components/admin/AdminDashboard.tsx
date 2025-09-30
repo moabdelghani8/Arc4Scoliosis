@@ -1,17 +1,5 @@
 import React, { useState } from 'react';
-import { 
-  LogOut, 
-  Eye, 
-  Edit3, 
-  Trash2, 
-  Plus, 
-  GripVertical,
-  Settings,
-  Users,
-  FileText,
-  MessageSquare,
-  Phone
-} from 'lucide-react';
+import { LogOut, Eye, CreditCard as Edit3, Trash2, Plus, GripVertical, Settings, Users, FileText, MessageSquare, Phone } from 'lucide-react';
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { useSortable } from '@dnd-kit/sortable';
