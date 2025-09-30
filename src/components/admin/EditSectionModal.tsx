@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Save } from 'lucide-react';
+import { X, Save, Plus, Trash2 } from 'lucide-react';
 import { Section, SiteContent } from '../../types';
 
 interface EditSectionModalProps {
@@ -22,6 +22,21 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
           break;
         case 'about':
           setFormData(siteContent.about);
+          break;
+        case 'team':
+          setFormData({ teamMembers: siteContent.teamMembers });
+          break;
+        case 'services':
+          setFormData({ services: siteContent.services });
+          break;
+        case 'cases':
+          setFormData({ caseStudies: siteContent.caseStudies });
+          break;
+        case 'testimonials':
+          setFormData({ testimonials: siteContent.testimonials });
+          break;
+        case 'contact':
+          setFormData(siteContent.contactInfo);
           break;
         default:
           setFormData({});
@@ -52,6 +67,21 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
         break;
       case 'about':
         updatedContent.about = formData;
+        break;
+      case 'team':
+        updatedContent.teamMembers = formData.teamMembers;
+        break;
+      case 'services':
+        updatedContent.services = formData.services;
+        break;
+      case 'cases':
+        updatedContent.caseStudies = formData.caseStudies;
+        break;
+      case 'testimonials':
+        updatedContent.testimonials = formData.testimonials;
+        break;
+      case 'contact':
+        updatedContent.contactInfo = formData;
         break;
     }
     
@@ -159,66 +189,431 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
     </div>
   );
 
-  const renderEditor = () => {
-    switch (section.type) {
-      case 'hero':
-        return renderHeroEditor();
-      case 'about':
-        return renderAboutEditor();
-      default:
-        return (
-          <div className="text-center py-8">
-            <p className="text-gray-600 dark:text-gray-300">
-              Editor for {section.type} sections is coming soon.
-            </p>
-          </div>
-        );
-    }
-  };
-
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 w-full max-w-2xl max-h-[80vh] overflow-y-auto">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            Edit {section.title}
-          </h2>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-          >
-            <X className="h-5 w-5 text-gray-500" />
-          </button>
-        </div>
-
-        {renderEditor()}
-
-        <div className="flex justify-end space-x-3 mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
-          <button
-            onClick={onClose}
-            className="px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleSave}
-            disabled={isLoading}
-            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white rounded-lg font-medium transition-colors flex items-center"
-          >
-            {isLoading ? (
-              <>
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                Saving...
-              </>
-            ) : (
-              <>
-                <Save className="h-4 w-4 mr-2" />
-                Save Changes
-              </>
-            )}
-          </button>
-        </div>
+  const renderTeamEditor = () => (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Team Members</h3>
+        <button
+          onClick={() => {
+            const newMember = {
+              id: Date.now().toString(),
+              name: '',
+              title: '',
+              credentials: '',
+              bio: '',
+              image: ''
+            };
+            setFormData(prev => ({
+              ...prev,
+              teamMembers: [...(prev.teamMembers || []), newMember]
+            }));
+          }}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
+        >
+          <Plus className="h-4 w-4 mr-1" />
+          Add Member
+        </button>
       </div>
+      
+      {(formData.teamMembers || []).map((member, index) => (
+        <div key={member.id} className="border border-gray-200 dark:border-gray-600 rounded-lg p-4 space-y-4">
+          <div className="flex justify-between items-center">
+            <h4 className="font-medium text-gray-900 dark:text-white">Team Member {index + 1}</h4>
+            <button
+              onClick={() => {
+                setFormData(prev => ({
+                  ...prev,
+                  teamMembers: prev.teamMembers.filter((_, i) => i !== index)
+                }));
+              }}
+              className="text-red-600 hover:text-red-700 p-1"
+            >
+              <Trash2 className="h-4 w-4" />
+            </button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+              <input
+                type="text"
+                value={member.name}
+                onChange={(e) => {
+                  const newMembers = [...formData.teamMembers];
+                  newMembers[index] = { ...member, name: e.target.value };
+                  setFormData(prev => ({ ...prev, teamMembers: newMembers }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Title</label>
+              <input
+                type="text"
+                value={member.title}
+                onChange={(e) => {
+                  const newMembers = [...formData.teamMembers];
+                  newMembers[index] = { ...member, title: e.target.value };
+                  setFormData(prev => ({ ...prev, teamMembers: newMembers }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Credentials</label>
+              <input
+                type="text"
+                value={member.credentials}
+                onChange={(e) => {
+                  const newMembers = [...formData.teamMembers];
+                  newMembers[index] = { ...member, credentials: e.target.value };
+                  setFormData(prev => ({ ...prev, teamMembers: newMembers }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Image URL</label>
+              <input
+                type="url"
+                value={member.image}
+                onChange={(e) => {
+                  const newMembers = [...formData.teamMembers];
+                  newMembers[index] = { ...member, image: e.target.value };
+                  setFormData(prev => ({ ...prev, teamMembers: newMembers }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Bio</label>
+            <textarea
+              value={member.bio}
+              onChange={(e) => {
+                const newMembers = [...formData.teamMembers];
+                newMembers[index] = { ...member, bio: e.target.value };
+                setFormData(prev => ({ ...prev, teamMembers: newMembers }));
+              }}
+              rows={3}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white resize-none"
+            />
+          </div>
+        </div>
+      ))}
     </div>
   );
-}
+
+  const renderServicesEditor = () => (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Services</h3>
+        <button
+          onClick={() => {
+            const newService = {
+              id: Date.now().toString(),
+              title: '',
+              description: '',
+              icon: 'activity'
+            };
+            setFormData(prev => ({
+              ...prev,
+              services: [...(prev.services || []), newService]
+            }));
+          }}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
+        >
+          <Plus className="h-4 w-4 mr-1" />
+          Add Service
+        </button>
+      </div>
+      
+      {(formData.services || []).map((service, index) => (
+        <div key={service.id} className="border border-gray-200 dark:border-gray-600 rounded-lg p-4 space-y-4">
+          <div className="flex justify-between items-center">
+            <h4 className="font-medium text-gray-900 dark:text-white">Service {index + 1}</h4>
+            <button
+              onClick={() => {
+                setFormData(prev => ({
+                  ...prev,
+                  services: prev.services.filter((_, i) => i !== index)
+                }));
+              }}
+              className="text-red-600 hover:text-red-700 p-1"
+            >
+              <Trash2 className="h-4 w-4" />
+            </button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Title</label>
+              <input
+                type="text"
+                value={service.title}
+                onChange={(e) => {
+                  const newServices = [...formData.services];
+                  newServices[index] = { ...service, title: e.target.value };
+                  setFormData(prev => ({ ...prev, services: newServices }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Icon</label>
+              <select
+                value={service.icon}
+                onChange={(e) => {
+                  const newServices = [...formData.services];
+                  newServices[index] = { ...service, icon: e.target.value };
+                  setFormData(prev => ({ ...prev, services: newServices }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              >
+                <option value="activity">Activity</option>
+                <option value="heart">Heart</option>
+                <option value="shield">Shield</option>
+                <option value="eye">Eye</option>
+                <option value="hand">Hand</option>
+                <option value="bone">Bone</option>
+              </select>
+            </div>
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
+            <textarea
+              value={service.description}
+              onChange={(e) => {
+                const newServices = [...formData.services];
+                newServices[index] = { ...service, description: e.target.value };
+                setFormData(prev => ({ ...prev, services: newServices }));
+              }}
+              rows={3}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white resize-none"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderCasesEditor = () => (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Case Studies</h3>
+        <button
+          onClick={() => {
+            const newCase = {
+              id: Date.now().toString(),
+              title: '',
+              beforeImage: '',
+              afterImage: '',
+              description: '',
+              condition: '',
+              treatment: '',
+              outcome: ''
+            };
+            setFormData(prev => ({
+              ...prev,
+              caseStudies: [...(prev.caseStudies || []), newCase]
+            }));
+          }}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
+        >
+          <Plus className="h-4 w-4 mr-1" />
+          Add Case Study
+        </button>
+      </div>
+      
+      {(formData.caseStudies || []).map((caseStudy, index) => (
+        <div key={caseStudy.id} className="border border-gray-200 dark:border-gray-600 rounded-lg p-4 space-y-4">
+          <div className="flex justify-between items-center">
+            <h4 className="font-medium text-gray-900 dark:text-white">Case Study {index + 1}</h4>
+            <button
+              onClick={() => {
+                setFormData(prev => ({
+                  ...prev,
+                  caseStudies: prev.caseStudies.filter((_, i) => i !== index)
+                }));
+              }}
+              className="text-red-600 hover:text-red-700 p-1"
+            >
+              <Trash2 className="h-4 w-4" />
+            </button>
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Title</label>
+            <input
+              type="text"
+              value={caseStudy.title}
+              onChange={(e) => {
+                const newCases = [...formData.caseStudies];
+                newCases[index] = { ...caseStudy, title: e.target.value };
+                setFormData(prev => ({ ...prev, caseStudies: newCases }));
+              }}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Before Image URL</label>
+              <input
+                type="url"
+                value={caseStudy.beforeImage}
+                onChange={(e) => {
+                  const newCases = [...formData.caseStudies];
+                  newCases[index] = { ...caseStudy, beforeImage: e.target.value };
+                  setFormData(prev => ({ ...prev, caseStudies: newCases }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">After Image URL</label>
+              <input
+                type="url"
+                value={caseStudy.afterImage}
+                onChange={(e) => {
+                  const newCases = [...formData.caseStudies];
+                  newCases[index] = { ...caseStudy, afterImage: e.target.value };
+                  setFormData(prev => ({ ...prev, caseStudies: newCases }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
+            <textarea
+              value={caseStudy.description}
+              onChange={(e) => {
+                const newCases = [...formData.caseStudies];
+                newCases[index] = { ...caseStudy, description: e.target.value };
+                setFormData(prev => ({ ...prev, caseStudies: newCases }));
+              }}
+              rows={3}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white resize-none"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Condition</label>
+            <input
+              type="text"
+              value={caseStudy.condition}
+              onChange={(e) => {
+                const newCases = [...formData.caseStudies];
+                newCases[index] = { ...caseStudy, condition: e.target.value };
+                setFormData(prev => ({ ...prev, caseStudies: newCases }));
+              }}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Treatment</label>
+            <textarea
+              value={caseStudy.treatment}
+              onChange={(e) => {
+                const newCases = [...formData.caseStudies];
+                newCases[index] = { ...caseStudy, treatment: e.target.value };
+                setFormData(prev => ({ ...prev, caseStudies: newCases }));
+              }}
+              rows={2}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white resize-none"
+            />
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Outcome</label>
+            <textarea
+              value={caseStudy.outcome}
+              onChange={(e) => {
+                const newCases = [...formData.caseStudies];
+                newCases[index] = { ...caseStudy, outcome: e.target.value };
+                setFormData(prev => ({ ...prev, caseStudies: newCases }));
+              }}
+              rows={2}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white resize-none"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderTestimonialsEditor = () => (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Testimonials</h3>
+        <button
+          onClick={() => {
+            const newTestimonial = {
+              id: Date.now().toString(),
+              quote: '',
+              patientName: '',
+              condition: ''
+            };
+            setFormData(prev => ({
+              ...prev,
+              testimonials: [...(prev.testimonials || []), newTestimonial]
+            }));
+          }}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
+        >
+          <Plus className="h-4 w-4 mr-1" />
+          Add Testimonial
+        </button>
+      </div>
+      
+      {(formData.testimonials || []).map((testimonial, index) => (
+        <div key={testimonial.id} className="border border-gray-200 dark:border-gray-600 rounded-lg p-4 space-y-4">
+          <div className="flex justify-between items-center">
+            <h4 className="font-medium text-gray-900 dark:text-white">Testimonial {index + 1}</h4>
+            <button
+              onClick={() => {
+                setFormData(prev => ({
+                  ...prev,
+                  testimonials: prev.testimonials.filter((_, i) => i !== index)
+                }));
+              }}
+              className="text-red-600 hover:text-red-700 p-1"
+            >
+              <Trash2 className="h-4 w-4" />
+            </button>
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Quote</label>
+            <textarea
+              value={testimonial.quote}
+              onChange={(e) => {
+                const newTestimonials = [...formData.testimonials];
+                newTestimonials[index] = { ...testimonial, quote: e.target.value };
+                setFormData(prev => ({ ...prev, testimonials: newTestimonials }));
+              }}
+              rows={3}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white resize-none"
+              placeholder="Enter the testimonial quote..."
+            />
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Patient Name</label>
+              <input
+                type="text"
+                value={testimonial.patientName}
+                onChange={(e) => {
+                  const newTestimonials = [...formData.testimonials];
+                  newTest
