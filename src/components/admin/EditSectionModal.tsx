@@ -618,4 +618,151 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
                   const newTestimonials = [...formData.testimonials];
                   newTestimonials[index] = { ...testimonial, patientName: e.target.value };
                   setFormData(prev => ({ ...prev, testimonials: newTestimonials }));
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Condition</label>
+              <input
+                type="text"
+                value={testimonial.condition}
+                onChange={(e) => {
+                  const newTestimonials = [...formData.testimonials];
+                  newTestimonials[index] = { ...testimonial, condition: e.target.value };
                   setFormData(prev => ({ ...prev, testimonials: newTestimonials }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderContactEditor = () => (
+    <div className="space-y-4">
+      <div>
+        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+          Phone Number
+        </label>
+        <input
+          type="tel"
+          value={formData.phone || ''}
+          onChange={(e) => handleInputChange('phone', e.target.value)}
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-700 dark:text-white"
+          placeholder="Enter phone number"
+        />
+      </div>
+      
+      <div>
+        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+          Email Address
+        </label>
+        <input
+          type="email"
+          value={formData.email || ''}
+          onChange={(e) => handleInputChange('email', e.target.value)}
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-700 dark:text-white"
+          placeholder="Enter email address"
+        />
+      </div>
+      
+      <div>
+        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+          Address
+        </label>
+        <textarea
+          value={formData.address || ''}
+          onChange={(e) => handleInputChange('address', e.target.value)}
+          rows={3}
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-700 dark:text-white resize-none"
+          placeholder="Enter full address"
+        />
+      </div>
+      
+      <div>
+        <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+          Office Hours
+        </label>
+        <textarea
+          value={formData.hours || ''}
+          onChange={(e) => handleInputChange('hours', e.target.value)}
+          rows={4}
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-700 dark:text-white resize-none"
+          placeholder="Enter office hours"
+        />
+      </div>
+    </div>
+  );
+
+  const renderEditor = () => {
+    switch (section.type) {
+      case 'hero':
+        return renderHeroEditor();
+      case 'about':
+        return renderAboutEditor();
+      case 'team':
+        return renderTeamEditor();
+      case 'services':
+        return renderServicesEditor();
+      case 'cases':
+        return renderCasesEditor();
+      case 'testimonials':
+        return renderTestimonialsEditor();
+      case 'contact':
+        return renderContactEditor();
+      default:
+        return <div>Editor not available for this section type.</div>;
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Edit {section.title}
+          </h2>
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 p-2"
+          >
+            <X className="h-6 w-6" />
+          </button>
+        </div>
+        
+        <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
+          {renderEditor()}
+        </div>
+        
+        <div className="flex justify-end gap-3 p-6 border-t border-gray-200 dark:border-gray-700">
+          <button
+            onClick={onClose}
+            className="px-6 py-2 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg font-medium transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleSave}
+            disabled={isLoading}
+            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white rounded-lg font-medium flex items-center transition-colors"
+          >
+            {isLoading ? (
+              <>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                Saving...
+              </>
+            ) : (
+              <>
+                <Save className="h-4 w-4 mr-2" />
+                Save Changes
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
