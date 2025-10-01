@@ -100,7 +100,7 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
           type="text"
           value={formData.headline || ''}
           onChange={(e) => handleInputChange('headline', e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-700 dark:text-white"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400 focus:border-transparent dark:bg-gray-700 dark:text-white"
           placeholder="Enter main headline"
         />
       </div>
@@ -113,7 +113,7 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
           value={formData.subheadline || ''}
           onChange={(e) => handleInputChange('subheadline', e.target.value)}
           rows={3}
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-700 dark:text-white resize-none"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400 focus:border-transparent dark:bg-gray-700 dark:text-white resize-none"
           placeholder="Enter subheadline text"
         />
       </div>
@@ -126,7 +126,7 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
           type="text"
           value={formData.ctaText || ''}
           onChange={(e) => handleInputChange('ctaText', e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-700 dark:text-white"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400 focus:border-transparent dark:bg-gray-700 dark:text-white"
           placeholder="Enter button text"
         />
       </div>
@@ -139,7 +139,7 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
           type="url"
           value={formData.backgroundImage || ''}
           onChange={(e) => handleInputChange('backgroundImage', e.target.value)}
-          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-700 dark:text-white"
+          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400 focus:border-transparent dark:bg-gray-700 dark:text-white"
           placeholder="Enter image URL"
         />
       </div>
@@ -208,7 +208,7 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
               teamMembers: [...(prev.teamMembers || []), newMember]
             }));
           }}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
+          className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
         >
           <Plus className="h-4 w-4 mr-1" />
           Add Member
@@ -325,7 +325,7 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
               services: [...(prev.services || []), newService]
             }));
           }}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
+          className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
         >
           <Plus className="h-4 w-4 mr-1" />
           Add Service
@@ -424,7 +424,7 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
               caseStudies: [...(prev.caseStudies || []), newCase]
             }));
           }}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
+          className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
         >
           <Plus className="h-4 w-4 mr-1" />
           Add Case Study
@@ -569,7 +569,7 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
               testimonials: [...(prev.testimonials || []), newTestimonial]
             }));
           }}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
+          className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
         >
           <Plus className="h-4 w-4 mr-1" />
           Add Testimonial
@@ -748,7 +748,7 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
           <button
             onClick={handleSave}
             disabled={isLoading}
-            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white rounded-lg font-medium flex items-center transition-colors"
+            className="px-6 py-2 bg-orange-600 hover:bg-orange-700 disabled:bg-orange-400 text-white rounded-lg font-medium flex items-center transition-colors"
           >
             {isLoading ? (
               <>
