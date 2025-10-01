@@ -61,7 +61,6 @@ export function AboutSection({ content }: AboutSectionProps) {
                       {stat.label}
                     </div>
                   </div>
-                </div>
               ))}
             </div>
           </div>
