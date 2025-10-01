@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, Award, Users, Clock } from 'lucide-react';
+import { CircleCheck as CheckCircle, Award, Users, Clock } from 'lucide-react';
 import { AboutContent } from '../../types';
 
 interface AboutSectionProps {
@@ -61,6 +61,7 @@ export function AboutSection({ content }: AboutSectionProps) {
                       {stat.label}
                     </div>
                   </div>
+                </div>
               ))}
             </div>
           </div>

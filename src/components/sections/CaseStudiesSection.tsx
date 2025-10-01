@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CircleCheck as CheckCircle } from 'lucide-react';
 import { CaseStudy } from '../../types';
 
 interface CaseStudiesSectionProps {
@@ -72,8 +72,8 @@ export function CaseStudiesSection({ caseStudies }: CaseStudiesSectionProps) {
 
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
-                    <div className="bg-orange-100 dark:bg-orange-900/30 p-1 rounded-full mt-1">
-                      <CheckCircle className="h-4 w-4 text-orange-600 dark:text-orange-400" />
+                    <div className="bg-blue-100 dark:bg-blue-900/30 p-1 rounded-full mt-1">
+                      <CheckCircle className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 dark:text-white">Initial Condition</h4>
@@ -82,8 +82,8 @@ export function CaseStudiesSection({ caseStudies }: CaseStudiesSectionProps) {
                   </div>
 
                   <div className="flex items-start space-x-3">
-                    <div className="bg-orange-100 dark:bg-orange-900/30 p-1 rounded-full mt-1">
-                      <CheckCircle className="h-4 w-4 text-orange-600 dark:text-orange-400" />
+                    <div className="bg-blue-100 dark:bg-blue-900/30 p-1 rounded-full mt-1">
+                      <CheckCircle className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 dark:text-white">Treatment Approach</h4>
@@ -102,7 +102,7 @@ export function CaseStudiesSection({ caseStudies }: CaseStudiesSectionProps) {
                   </div>
                 </div>
 
-                <button className="group bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center">
+                <button className="group bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center">
                   Learn About This Treatment
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </button>
