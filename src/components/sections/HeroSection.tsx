@@ -13,10 +13,10 @@ export function HeroSection({ content }: HeroSectionProps) {
       <div className="absolute inset-0 z-0">
         <img
           src={content.backgroundImage}
-          alt="Physical therapy session"
+          alt="Scoliosis therapy session"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-blue-800/60 to-transparent dark:from-gray-900/90 dark:via-gray-800/70 dark:to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-900/80 via-orange-800/60 to-transparent dark:from-gray-900/90 dark:via-gray-800/70 dark:to-transparent"></div>
       </div>
 
       {/* Content */}
@@ -30,7 +30,7 @@ export function HeroSection({ content }: HeroSectionProps) {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="group bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center">
+            <button className="group bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl flex items-center">
               {content.ctaText}
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </button>

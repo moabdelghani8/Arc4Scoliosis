@@ -11,15 +11,15 @@ export const defaultSiteContent: SiteContent = {
     { id: '7', type: 'contact', title: 'Contact Us', visible: true, order: 7, content: {} },
   ],
   hero: {
-    headline: 'Restore Your Movement, Reclaim Your Life',
-    subheadline: 'Expert physical therapy treatment with personalized care and proven results. Get back to doing what you love.',
+    headline: 'ARC FOR SCOLIOSIS PHYSIOTHERAPY AND BRACING',
+    subheadline: 'where Science meets Art - ARC is the first leading Physical Therapy Clinic Specialized in Scoliosis Rehabilitation in Egypt & the middle East',
     ctaText: 'Start Your Recovery',
-    backgroundImage: 'https://www.orthobethesda.com/wp-content/uploads/2020/06/Why-Physical-Therapy-Is-Important-1200x900.jpg'
+    backgroundImage: 'https://static.wixstatic.com/media/e124f0_1a9aa93574654d7593cbaf25ddd112d7~mv2.jpg'
   },
   about: {
-    title: 'Excellence in Physical Therapy Care',
-    bodyText: 'At our clinic, we combine evidence-based treatment approaches with compassionate care to help you achieve your recovery goals. Our state-of-the-art facility and experienced team are dedicated to providing personalized treatment plans that address your unique needs and lifestyle.',
-    image: 'https://www.caryortho.com/wp-content/uploads/2022/04/Post-Surgery-Rehabilitation.jpg'
+    title: 'OUR SERVICES',
+    bodyText: 'Scoliosis Specialized Physical Therapy Center - ARC is a Certified Schroth Best Practice Practitioner - Germany',
+    image: 'https://static.wixstatic.com/media/e124f0_c0d10659d0944ea28decdd5aaa2a4816~mv2.jpg'
   },
   teamMembers: [
     {

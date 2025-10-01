@@ -27,7 +27,7 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
             >
               {/* Quote Icon */}
               <div className="absolute -top-4 left-8">
-                <div className="bg-blue-600 w-8 h-8 rounded-full flex items-center justify-center">
+                <div className="bg-orange-600 w-8 h-8 rounded-full flex items-center justify-center">
                   <Quote className="h-4 w-4 text-white" />
                 </div>
               </div>

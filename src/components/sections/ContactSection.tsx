@@ -52,8 +52,8 @@ export function ContactSection({ contactInfo }: ContactSectionProps) {
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg">
-                  <MapPin className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                <div className="bg-orange-100 dark:bg-orange-900/30 p-3 rounded-lg">
+                  <MapPin className="h-6 w-6 text-orange-600 dark:text-orange-400" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Address</h4>
@@ -62,8 +62,8 @@ export function ContactSection({ contactInfo }: ContactSectionProps) {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg">
-                  <Phone className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                <div className="bg-orange-100 dark:bg-orange-900/30 p-3 rounded-lg">
+                  <Phone className="h-6 w-6 text-orange-600 dark:text-orange-400" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Phone</h4>
@@ -72,8 +72,8 @@ export function ContactSection({ contactInfo }: ContactSectionProps) {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg">
-                  <Mail className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                <div className="bg-orange-100 dark:bg-orange-900/30 p-3 rounded-lg">
+                  <Mail className="h-6 w-6 text-orange-600 dark:text-orange-400" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Email</h4>
@@ -82,8 +82,8 @@ export function ContactSection({ contactInfo }: ContactSectionProps) {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg">
-                  <Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                <div className="bg-orange-100 dark:bg-orange-900/30 p-3 rounded-lg">
+                  <Clock className="h-6 w-6 text-orange-600 dark:text-orange-400" />
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Hours</h4>
@@ -130,7 +130,7 @@ export function ContactSection({ contactInfo }: ContactSectionProps) {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-800 dark:text-white transition-colors duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400 focus:border-transparent dark:bg-gray-800 dark:text-white transition-colors duration-200"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -147,7 +147,7 @@ export function ContactSection({ contactInfo }: ContactSectionProps) {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-800 dark:text-white transition-colors duration-200"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400 focus:border-transparent dark:bg-gray-800 dark:text-white transition-colors duration-200"
                       placeholder="Enter your email"
                     />
                   </div>
@@ -162,7 +162,7 @@ export function ContactSection({ contactInfo }: ContactSectionProps) {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-800 dark:text-white transition-colors duration-200"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400 focus:border-transparent dark:bg-gray-800 dark:text-white transition-colors duration-200"
                       placeholder="Enter your phone"
                     />
                   </div>
@@ -179,14 +179,14 @@ export function ContactSection({ contactInfo }: ContactSectionProps) {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-800 dark:text-white transition-colors duration-200 resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:focus:ring-orange-400 focus:border-transparent dark:bg-gray-800 dark:text-white transition-colors duration-200 resize-none"
                     placeholder="Tell us about your condition and how we can help..."
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center"
+                  className="w-full bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center"
                 >
                   Send Message
                   <Send className="ml-2 h-5 w-5" />

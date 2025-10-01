@@ -230,7 +230,7 @@ export function AdminDashboard({ onLogout, siteContent, onUpdateContent }: Admin
             
             <button
               onClick={onLogout}
-              className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200"
+              className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-colors duration-200"
             >
               <LogOut className="h-4 w-4" />
               <span>Logout</span>
@@ -275,7 +275,7 @@ export function AdminDashboard({ onLogout, siteContent, onUpdateContent }: Admin
               
               <button 
                 onClick={() => setShowAddModal(true)}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center space-x-2"
+                className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center space-x-2"
               >
                 <Plus className="h-4 w-4" />
                 <span>Add Section</span>

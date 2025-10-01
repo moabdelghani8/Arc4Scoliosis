@@ -103,7 +103,7 @@ function App() {
       {/* Admin Access Button (Demo only - remove in production) */}
       <button
         onClick={handleAdminAccess}
-        className="fixed bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow-lg font-medium transition-colors duration-200 z-50"
+        className="fixed bottom-4 right-4 bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg shadow-lg font-medium transition-colors duration-200 z-50"
       >
         Admin Dashboard
       </button>

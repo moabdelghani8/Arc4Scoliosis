@@ -44,7 +44,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                 key={service.id}
                 className="group bg-gray-50 dark:bg-gray-900 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
               >
-                <div className="bg-blue-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div className="bg-orange-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <IconComponent className="h-8 w-8 text-white" />
                 </div>
                 
@@ -57,7 +57,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
                 </p>
                 
                 <div className="mt-6">
-                  <button className="text-blue-600 dark:text-blue-400 font-semibold hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 group">
+                  <button className="text-orange-600 dark:text-orange-400 font-semibold hover:text-orange-700 dark:hover:text-orange-300 transition-colors duration-200 group">
                     Learn More
                     <span className="inline-block ml-1 group-hover:translate-x-1 transition-transform duration-200">→</span>
                   </button>

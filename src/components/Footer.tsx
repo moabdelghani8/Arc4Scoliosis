@@ -33,7 +33,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <div className="bg-blue-600 p-2 rounded-lg">
+              <div className="bg-orange-600 p-2 rounded-lg">
                 <Activity className="h-6 w-6 text-white" />
               </div>
               <span className="text-xl font-bold">Arc4Scoliosis</span>
@@ -48,7 +48,7 @@ export function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
-                  className="bg-gray-800 hover:bg-blue-600 p-2 rounded-lg transition-colors duration-200"
+                  className="bg-gray-800 hover:bg-orange-600 p-2 rounded-lg transition-colors duration-200"
                   aria-label={social.label}
                 >
                   <social.icon className="h-5 w-5" />
@@ -91,7 +91,7 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-6">Contact Info</h3>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-blue-400 mt-1 flex-shrink-0" />
+                <MapPin className="h-5 w-5 text-orange-400 mt-1 flex-shrink-0" />
                 <span className="text-gray-300">
                   123 Wellness Drive<br />
                   Health City, HC 12345
@@ -99,12 +99,12 @@ export function Footer() {
               </div>
               
               <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                <Phone className="h-5 w-5 text-orange-400 flex-shrink-0" />
                 <span className="text-gray-300">(555) 123-4567</span>
               </div>
               
               <div className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                <Mail className="h-5 w-5 text-orange-400 flex-shrink-0" />
                 <span className="text-gray-300">info@ptclinic.com</span>
               </div>
             </div>
@@ -131,10 +131,10 @@ export function Footer() {
               <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
+              <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors duration-200">
                 Terms of Service
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors duration-200">
+              <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors duration-200">
                 HIPAA Notice
               </a>
             </div>

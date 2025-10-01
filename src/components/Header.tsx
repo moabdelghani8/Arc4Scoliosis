@@ -31,7 +31,7 @@ export function Header({ onNavigate }: HeaderProps) {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="bg-blue-600 p-2 rounded-lg">
+            <div className="bg-orange-600 p-2 rounded-lg">
               <Activity className="h-6 w-6 text-white" />
             </div>
             <span className="text-xl font-bold text-gray-900 dark:text-white">
@@ -56,7 +56,7 @@ export function Header({ onNavigate }: HeaderProps) {
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              className="p-2 rounded-lg bg-orange-100 dark:bg-gray-800 hover:bg-orange-200 dark:hover:bg-gray-700 transition-colors duration-200"
               aria-label="Toggle theme"
             >
               {theme === 'light' ? (
@@ -66,14 +66,14 @@ export function Header({ onNavigate }: HeaderProps) {
               )}
             </button>
 
-            <button className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200">
+            <button className="hidden md:block bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200">
               Book Appointment
             </button>
 
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              className="md:hidden p-2 rounded-lg bg-orange-100 dark:bg-gray-800 hover:bg-orange-200 dark:hover:bg-gray-700 transition-colors duration-200"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? (
@@ -98,7 +98,7 @@ export function Header({ onNavigate }: HeaderProps) {
                   {item.label}
                 </button>
               ))}
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 w-full mt-4">
+              <button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 w-full mt-4">
                 Book Appointment
               </button>
             </nav>

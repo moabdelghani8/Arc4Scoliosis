@@ -90,14 +90,14 @@ export function AddSectionModal({ isOpen, onClose, onAdd }: AddSectionModalProps
                 onClick={() => setSelectedType(section.type)}
                 className={`p-4 rounded-lg border-2 text-left transition-all duration-200 ${
                   selectedType === section.type
-                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                    ? 'border-orange-500 bg-orange-50 dark:bg-orange-900/20'
                     : 'border-gray-200 dark:border-gray-600 hover:border-blue-300 dark:hover:border-blue-400'
                 }`}
               >
                 <div className="flex items-start space-x-3">
                   <div className={`p-2 rounded-lg ${
                     selectedType === section.type
-                      ? 'bg-blue-500 text-white'
+                      ? 'bg-orange-500 text-white'
                       : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
                   }`}>
                     <IconComponent className="h-5 w-5" />
@@ -126,7 +126,7 @@ export function AddSectionModal({ isOpen, onClose, onAdd }: AddSectionModalProps
           <button
             onClick={handleAdd}
             disabled={!selectedType}
-            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors"
+            className="px-6 py-2 bg-orange-600 hover:bg-orange-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors"
           >
             Add Section
           </button>

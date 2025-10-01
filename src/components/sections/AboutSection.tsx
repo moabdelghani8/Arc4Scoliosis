@@ -57,7 +57,7 @@ export function AboutSection({ content }: AboutSectionProps) {
                     <div className="text-2xl font-bold text-gray-900 dark:text-white">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
+                  <stat.icon className="h-8 w-8 text-orange-600 mx-auto mb-2" />
                       {stat.label}
                     </div>
                   </div>
