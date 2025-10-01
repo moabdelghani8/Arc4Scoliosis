@@ -14,16 +14,17 @@ export function Footer() {
     { label: 'Services', href: '#services' },
     { label: 'Our Team', href: '#team' },
     { label: 'Patient Results', href: '#cases' },
+    { label: 'Pricing Plans', href: '#pricing' },
     { label: 'Contact', href: '#contact' }
   ];
 
   const services = [
-    'Orthopedic Rehabilitation',
-    'Sports Injury Recovery', 
-    'Manual Therapy',
-    'Movement Analysis',
+    'Scoliosis Assessment',
+    'Schroth Method Therapy', 
+    'Scoliosis Bracing',
+    'Postural Training',
     'Pain Management',
-    'Wellness Programs'
+    'Online Consultations'
   ];
 
   return (
@@ -40,7 +41,7 @@ export function Footer() {
             </div>
             
             <p className="text-gray-300 leading-relaxed">
-              Leading physical therapy clinic dedicated to helping you restore movement, reduce pain, and reclaim your life through expert care and personalized treatment.
+              Leading scoliosis specialized physical therapy clinic in Egypt & the Middle East. We provide expert Schroth Method therapy, custom bracing, and comprehensive rehabilitation programs to help patients achieve better spinal health.
             </p>
 
             <div className="flex space-x-4">

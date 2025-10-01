@@ -1,0 +1,187 @@
+/* Services Section Styles */
+.services-section {
+    padding: 5rem 0;
+    background-color: white;
+  }
+  
+  .dark .services-section {
+    background-color: #1f2937;
+  }
+  
+  .services-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .services-container {
+      padding: 0 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .services-container {
+      padding: 0 2rem;
+    }
+  }
+  
+  /* Header Styles */
+  .services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .services-header-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .services-header-title {
+      font-size: 2.25rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .services-header-title {
+      font-size: 3rem;
+    }
+  }
+  
+  .dark .services-header-title {
+    color: white;
+  }
+  
+  .services-header-subtitle {
+    font-size: 1.25rem;
+    color: #4b5563;
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+  
+  .dark .services-header-subtitle {
+    color: #d1d5db;
+  }
+  
+  /* Grid Styles */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  @media (min-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Service Card Styles */
+  .service-card {
+    background-color: #f9fafb;
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+  }
+  
+  .service-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: translateY(-0.5rem);
+  }
+  
+  .dark .service-card {
+    background-color: #111827;
+    border-color: #374151;
+  }
+  
+  /* Icon Container Styles */
+  .service-icon-container {
+    background-color: #ea580c;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-card:hover .service-icon-container {
+    transform: scale(1.1);
+  }
+  
+  .service-icon {
+    width: 2rem;
+    height: 2rem;
+    color: white;
+  }
+  
+  /* Service Title Styles */
+  .service-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1rem;
+  }
+  
+  .dark .service-title {
+    color: white;
+  }
+  
+  /* Service Description Styles */
+  .service-description {
+    color: #4b5563;
+    line-height: 1.625;
+  }
+  
+  .dark .service-description {
+    color: #d1d5db;
+  }
+  
+  /* Learn More Button Styles */
+  .service-learn-more-container {
+    margin-top: 1.5rem;
+  }
+  
+  .service-learn-more {
+    color: #ea580c;
+    font-weight: 600;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
+  }
+  
+  .service-learn-more:hover {
+    color: #c2410c;
+  }
+  
+  .dark .service-learn-more {
+    color: #fb923c;
+  }
+  
+  .dark .service-learn-more:hover {
+    color: #fdba74;
+  }
+  
+  .service-learn-more-arrow {
+    display: inline-block;
+    margin-left: 0.25rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .service-learn-more:hover .service-learn-more-arrow {
+    transform: translateX(0.25rem);
+  }

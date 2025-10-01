@@ -44,6 +44,7 @@ function SortableItem({ section, onEdit, onDelete, onToggleVisibility }: Sortabl
     team: Users,
     cases: FileText,
     testimonials: MessageSquare,
+    pricing: Edit3,
     contact: Phone
   };
 
@@ -205,6 +206,7 @@ export function AdminDashboard({ onLogout, siteContent, onUpdateContent }: Admin
       team: 'Our Team',
       cases: 'Case Studies',
       testimonials: 'Testimonials',
+      pricing: 'Pricing Plans',
       contact: 'Contact Us'
     };
     return titles[type];

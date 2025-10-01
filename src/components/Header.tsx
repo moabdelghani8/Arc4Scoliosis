@@ -16,6 +16,7 @@ export function Header({ onNavigate }: HeaderProps) {
     { label: 'Services', href: '#services' },
     { label: 'Team', href: '#team' },
     { label: 'Results', href: '#cases' },
+    { label: 'Pricing', href: '#pricing' },
     { label: 'Contact', href: '#contact' }
   ];
 

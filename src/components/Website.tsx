@@ -7,6 +7,7 @@ import { ServicesSection } from './sections/ServicesSection';
 import { TeamSection } from './sections/TeamSection';
 import { CaseStudiesSection } from './sections/CaseStudiesSection';
 import { TestimonialsSection } from './sections/TestimonialsSection';
+import { PricingSection } from './sections/PricingSection';
 import { ContactSection } from './sections/ContactSection';
 import { SiteContent } from '../types';
 
@@ -33,6 +34,8 @@ export function Website({ siteContent }: WebsiteProps) {
         return <CaseStudiesSection key={section.id} caseStudies={siteContent.caseStudies} />;
       case 'testimonials':
         return <TestimonialsSection key={section.id} testimonials={siteContent.testimonials} />;
+      case 'pricing':
+        return <PricingSection key={section.id} content={siteContent.pricing} />;
       case 'contact':
         return <ContactSection key={section.id} contactInfo={siteContent.contactInfo} />;
       default:

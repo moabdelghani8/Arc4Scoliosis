@@ -52,9 +52,25 @@ export interface AboutContent {
   image: string;
 }
 
+export interface PricingPlan {
+  id: string;
+  title: string;
+  price: string;
+  description: string;
+  validity: string;
+  benefits?: string[];
+  footerText?: string;
+}
+
+export interface PricingContent {
+  title: string;
+  subtitle?: string;
+  plans: PricingPlan[];
+}
+
 export interface Section {
   id: string;
-  type: 'hero' | 'about' | 'team' | 'services' | 'cases' | 'testimonials' | 'contact';
+  type: 'hero' | 'about' | 'team' | 'services' | 'cases' | 'testimonials' | 'contact' | 'pricing';
   title: string;
   visible: boolean;
   order: number;
@@ -70,4 +86,5 @@ export interface SiteContent {
   contactInfo: ContactInfo;
   hero: HeroContent;
   about: AboutContent;
+  pricing: PricingContent;
 }

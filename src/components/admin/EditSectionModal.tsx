@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { X, Save, Plus, Trash2 } from 'lucide-react';
 import { Section, SiteContent } from '../../types';
 
@@ -34,6 +34,9 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
           break;
         case 'testimonials':
           setFormData({ testimonials: siteContent.testimonials });
+          break;
+        case 'pricing':
+          setFormData(siteContent.pricing);
           break;
         case 'contact':
           setFormData(siteContent.contactInfo);
@@ -79,6 +82,9 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
         break;
       case 'testimonials':
         updatedContent.testimonials = formData.testimonials;
+        break;
+      case 'pricing':
+        updatedContent.pricing = formData;
         break;
       case 'contact':
         updatedContent.contactInfo = formData;
@@ -642,6 +648,218 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
     </div>
   );
 
+  const renderPricingEditor = () => (
+    <div className="space-y-6">
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            Section Title
+          </label>
+          <input
+            type="text"
+            value={formData.title || ''}
+            onChange={(e) => handleInputChange('title', e.target.value)}
+            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-700 dark:text-white"
+            placeholder="Enter section title"
+          />
+        </div>
+        
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            Subtitle
+          </label>
+          <textarea
+            value={formData.subtitle || ''}
+            onChange={(e) => handleInputChange('subtitle', e.target.value)}
+            rows={2}
+            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent dark:bg-gray-700 dark:text-white resize-none"
+            placeholder="Enter subtitle text"
+          />
+        </div>
+      </div>
+
+      <div className="flex justify-between items-center">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Pricing Plans</h3>
+        <button
+          onClick={() => {
+            const newPlan = {
+              id: Date.now().toString(),
+              title: '',
+              price: '',
+              description: '',
+              validity: '',
+              benefits: [],
+              footerText: ''
+            };
+            setFormData(prev => ({
+              ...prev,
+              plans: [...(prev.plans || []), newPlan]
+            }));
+          }}
+          className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-1 rounded-lg text-sm flex items-center"
+        >
+          <Plus className="h-4 w-4 mr-1" />
+          Add Plan
+        </button>
+      </div>
+      
+      {(formData.plans || []).map((plan, index) => (
+        <div key={plan.id} className="border border-gray-200 dark:border-gray-600 rounded-lg p-4 space-y-4">
+          <div className="flex justify-between items-center">
+            <h4 className="font-medium text-gray-900 dark:text-white">Plan {index + 1}</h4>
+            <button
+              onClick={() => {
+                setFormData(prev => ({
+                  ...prev,
+                  plans: prev.plans.filter((_, i) => i !== index)
+                }));
+              }}
+              className="text-red-600 hover:text-red-700 p-1"
+            >
+              <Trash2 className="h-4 w-4" />
+            </button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Plan Title</label>
+              <input
+                type="text"
+                value={plan.title}
+                onChange={(e) => {
+                  const newPlans = [...formData.plans];
+                  newPlans[index] = { ...plan, title: e.target.value };
+                  setFormData(prev => ({ ...prev, plans: newPlans }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Price</label>
+              <input
+                type="text"
+                value={plan.price}
+                onChange={(e) => {
+                  const newPlans = [...formData.plans];
+                  newPlans[index] = { ...plan, price: e.target.value };
+                  setFormData(prev => ({ ...prev, plans: newPlans }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                placeholder="e.g., 90, 1,400"
+              />
+            </div>
+          </div>
+          
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
+            <textarea
+              value={plan.description}
+              onChange={(e) => {
+                const newPlans = [...formData.plans];
+                newPlans[index] = { ...plan, description: e.target.value };
+                setFormData(prev => ({ ...prev, plans: newPlans }));
+              }}
+              rows={2}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white resize-none"
+              placeholder="Enter plan description"
+            />
+          </div>
+          
+          <div>
+            <div className="flex justify-between items-center mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Benefits</label>
+              <button
+                onClick={() => {
+                  const newPlans = [...formData.plans];
+                  newPlans[index] = { 
+                    ...plan, 
+                    benefits: [...(plan.benefits || []), ''] 
+                  };
+                  setFormData(prev => ({ ...prev, plans: newPlans }));
+                }}
+                className="bg-green-600 hover:bg-green-700 text-white px-2 py-1 rounded text-xs flex items-center"
+              >
+                <Plus className="h-3 w-3 mr-1" />
+                Add Benefit
+              </button>
+            </div>
+            
+            <div className="space-y-2">
+              {(plan.benefits || []).map((benefit, benefitIndex) => (
+                <div key={benefitIndex} className="flex items-center space-x-2">
+                  <input
+                    type="text"
+                    value={benefit}
+                    onChange={(e) => {
+                      const newPlans = [...formData.plans];
+                      const newBenefits = [...(newPlans[index].benefits || [])];
+                      newBenefits[benefitIndex] = e.target.value;
+                      newPlans[index] = { ...plan, benefits: newBenefits };
+                      setFormData(prev => ({ ...prev, plans: newPlans }));
+                    }}
+                    className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                    placeholder="Enter benefit"
+                  />
+                  <button
+                    onClick={() => {
+                      const newPlans = [...formData.plans];
+                      const newBenefits = (newPlans[index].benefits || []).filter((_, i) => i !== benefitIndex);
+                      newPlans[index] = { ...plan, benefits: newBenefits };
+                      setFormData(prev => ({ ...prev, plans: newPlans }));
+                    }}
+                    className="p-2 text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                    title="Remove benefit"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </button>
+                </div>
+              ))}
+              
+              {(!plan.benefits || plan.benefits.length === 0) && (
+                <div className="text-center py-4 text-gray-500 dark:text-gray-400 text-sm">
+                  No benefits added yet. Click "Add Benefit" to get started.
+                </div>
+              )}
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Validity</label>
+              <input
+                type="text"
+                value={plan.validity}
+                onChange={(e) => {
+                  const newPlans = [...formData.plans];
+                  newPlans[index] = { ...plan, validity: e.target.value };
+                  setFormData(prev => ({ ...prev, plans: newPlans }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                placeholder="e.g., Valid for 2 months"
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Footer Text</label>
+              <input
+                type="text"
+                value={plan.footerText || ''}
+                onChange={(e) => {
+                  const newPlans = [...formData.plans];
+                  newPlans[index] = { ...plan, footerText: e.target.value };
+                  setFormData(prev => ({ ...prev, plans: newPlans }));
+                }}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                placeholder="Optional footer text"
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
   const renderContactEditor = () => (
     <div className="space-y-4">
       <div>
@@ -712,6 +930,8 @@ export function EditSectionModal({ isOpen, onClose, section, siteContent, onSave
         return renderCasesEditor();
       case 'testimonials':
         return renderTestimonialsEditor();
+      case 'pricing':
+        return renderPricingEditor();
       case 'contact':
         return renderContactEditor();
       default:

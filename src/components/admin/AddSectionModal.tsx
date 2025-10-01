@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, FileText, Users, Settings, MessageSquare, Phone, User } from 'lucide-react';
+import { X, FileText, Users, Settings, MessageSquare, Phone, User, CreditCard } from 'lucide-react';
 import { Section } from '../../types';
 
 interface AddSectionModalProps {
@@ -44,6 +44,12 @@ const sectionTypes = [
     title: 'Testimonials Section',
     description: 'Patient reviews and feedback',
     icon: MessageSquare
+  },
+  {
+    type: 'pricing' as const,
+    title: 'Pricing Section',
+    description: 'Treatment plans and pricing options',
+    icon: CreditCard
   },
   {
     type: 'contact' as const,
